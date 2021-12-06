@@ -5,10 +5,13 @@ body{
     margin:0;
     
 }
-.container{
-    height:20rem;
-    width:25rem;
-    background-color: grey;
+.movie-con{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:30px;
+    justify-content: space-evenly;
+    background-color: whitesmoke;
 }
 .input-con{
     text-align: center;
@@ -17,11 +20,20 @@ body{
 input{
     margin: 20px;
     font-size: 20px;
-    text-indent: 10px;
+    text-indent: 50px;
 }
 .main-body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+.movieCover{
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    padding:10px;
+    height: 300px;
+    width:280px;
+    box-shadow: 0 5px 10px ;
 }
