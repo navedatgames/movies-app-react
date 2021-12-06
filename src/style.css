@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    
+}
+.container{
+    height:20rem;
+    width:25rem;
+    background-color: grey;
+}
+.input-con{
+    text-align: center;
+    margin-top: 20px;
+}
+input{
+    margin: 20px;
+    font-size: 20px;
+    text-indent: 10px;
+}
+.main-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
