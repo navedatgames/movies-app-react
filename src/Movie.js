@@ -4,21 +4,43 @@ import MovieComp from "./MovieComp"
 import axios from "axios"
 const apiLink = "https://api.themoviedb.org/3/movie/550?api_key=7dace42adcf0a600e4d6ac94b9835856"
 let Movie = ()=>{
-    const [mov,setMOv] = React.useState("")
-    function handleChange(event){
-        console.log(event.target.value)
-        setMOv(event.target.value)
+    const [mov,setMov] = React.useState("")
+    const[data,setData]  = React.useState()
+   
+    function handleKeyDown(event){
+        if(event.key==="Enter"){
+            setData(event.target.value)
+        }
     }
     React.useEffect(()=>{
         axios.get(apiLink,{
             params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
         }).then((response)=>{
-            console.log(response.data)
-        }).catch((err)=>{
-            console.log(err.data)
+            setMov(response.data)
+        }).catch((reject)=>{
+            console.log(reject.data)
         })
 
     },[])
+    console.log(data)
+    console.log(mov)
+   const notFound = (
+       <h1>Not Found!!</h1>
+   )
+    const movieShow = Object.keys(mov).map(function(key,index){
+        if(key=== "id"||key==="original_title"||key==="vote_average"){
+          return <>
+          <h2>{key}</h2>
+          <br/>
+          <h2>{ mov[key]}</h2>
+          </>
+          
+          
+           
+        }
+        
+        
+    }) 
     return (
         <div className = "main-body">
             <h1>Movies App</h1>
@@ -27,16 +49,27 @@ let Movie = ()=>{
                 <input
                 type="text"
                 placeholder="Search Movie"
-                onChange={handleChange}
-                name = "mov"
-                value = {mov}
+                onKeyDown={handleKeyDown}
+                name = "data"
+                value = {data}
+                
+                
                 />
                
             </div>
             <div className = "movie-con">
-                <MovieComp/>
-                
+
+            
+            {data==="Fight Club" &&movieShow}
+            {data!=="Fight Club" && <h2>Not Found!</h2>}
+            
+            
+             
+            
             </div>
+    
+           
+	
         </div>
     )
 }

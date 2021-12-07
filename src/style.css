@@ -12,6 +12,9 @@ body{
     padding:30px;
     justify-content: space-evenly;
     background-color: whitesmoke;
+    border:1px solid;
+    height: 300px;
+    width: 280px;
 }
 .input-con{
     text-align: center;
