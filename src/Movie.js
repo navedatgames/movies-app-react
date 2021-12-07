@@ -8,9 +8,9 @@ let Movie = ()=>{
     const[data,setData]  = React.useState()
    
     function handleKeyDown(event){
-        if(event.key==="Enter"){
+        
             setData(event.target.value)
-        }
+        
     }
     React.useEffect(()=>{
         axios.get(apiLink,{
@@ -49,7 +49,7 @@ let Movie = ()=>{
                 <input
                 type="text"
                 placeholder="Search Movie"
-                onKeyDown={handleKeyDown}
+                onChange={handleKeyDown}
                 name = "data"
                 value = {data}
                 
@@ -60,7 +60,7 @@ let Movie = ()=>{
             <div className = "movie-con">
 
             
-            {data==="Fight Club" &&movieShow}
+            {data===mov.title &&movieShow}
             {data!=="Fight Club" && <h2>Not Found!</h2>}
             
             
