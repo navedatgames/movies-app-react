@@ -7,11 +7,7 @@ let Movie = ()=>{
     const [mov,setMov] = React.useState("")
     const[data,setData]  = React.useState()
    
-    function handleKeyDown(event){
-        
-            setData(event.target.value)
-        
-    }
+    
     React.useEffect(()=>{
         axios.get(apiLink,{
             params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
@@ -22,6 +18,11 @@ let Movie = ()=>{
         })
 
     },[])
+
+    function handleKeyDown(event){
+        setData(event.target.value)
+        
+    }
     console.log(data)
     console.log(mov)
    const notFound = (
@@ -61,7 +62,7 @@ let Movie = ()=>{
 
             
             {data===mov.title &&movieShow}
-            {data!=="Fight Club" && <h2>Not Found!</h2>}
+            {data!==mov.title && notFound}
             
             
              
