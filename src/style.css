@@ -3,19 +3,15 @@
 }
 body{
     margin:0;
+    background-color: aqua;
     
 }
-.movie-con{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding:30px;
-    justify-content: space-evenly;
+ .movie-con{
+    padding:20px;
     background-color: whitesmoke;
     border:1px solid;
-    height: 300px;
-    width: 280px;
-}
+    
+} 
 .input-con{
     text-align: center;
     margin-top: 20px;

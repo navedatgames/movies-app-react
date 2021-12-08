@@ -1,8 +1,8 @@
 import React from "react"
 import "./style.css"
-import MovieComp from "./MovieComp"
+
 import axios from "axios"
-const apiLink = "https://api.themoviedb.org/3/movie/550?api_key=7dace42adcf0a600e4d6ac94b9835856"
+const apiLink = "https://api.themoviedb.org/3/search/movie"
 let Movie = ()=>{
     const [mov,setMov] = React.useState("")
     const[data,setData]  = React.useState()
@@ -10,38 +10,41 @@ let Movie = ()=>{
     
     React.useEffect(()=>{
         axios.get(apiLink,{
-            params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
+            params:{api_key:"7dace42adcf0a600e4d6ac94b9835856",
+                    query:data||"Avengers"}
         }).then((response)=>{
             setMov(response.data)
         }).catch((reject)=>{
             console.log(reject.data)
         })
 
-    },[])
+    },[data])
 
     function handleKeyDown(event){
-        setData(event.target.value)
+       
+            
+            setData(event.target.value)
+        
+        
         
     }
-    console.log(data)
+    
     console.log(mov)
-   const notFound = (
-       <h1>Not Found!!</h1>
-   )
-    const movieShow = Object.keys(mov).map(function(key,index){
-        if(key=== "id"||key==="original_title"||key==="vote_average"){
-          return <>
-          <h2>{key}</h2>
-          <br/>
-          <h2>{ mov[key]}</h2>
-          </>
-          
-          
-           
-        }
+  console.log(data)
+   const movieShow = mov?.results?.map((obj)=>{
+       return(
+           <>
+           <h4>id:{obj.id}</h4>
+           <h4>movie name:{obj.original_title}</h4>
+           <h4>release date:{obj.release_date}</h4> 
+            <img src = {"https://image.tmdb.org/t/p/w500"+obj.backdrop_path }alt = "Sorry Image Not Found !!"></img>
+            <br/>
+           </>
+       )
+   })
         
         
-    }) 
+ 
     return (
         <div className = "main-body">
             <h1>Movies App</h1>
@@ -51,7 +54,6 @@ let Movie = ()=>{
                 type="text"
                 placeholder="Search Movie"
                 onChange={handleKeyDown}
-                name = "data"
                 value = {data}
                 
                 
@@ -60,10 +62,8 @@ let Movie = ()=>{
             </div>
             <div className = "movie-con">
 
-            
-            {data===mov.title &&movieShow}
-            {data!==mov.title && notFound}
-            
+           
+            {movieShow}
             
              
             
