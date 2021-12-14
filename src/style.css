@@ -3,7 +3,7 @@
 }
 body{
     margin:0;
-    background-color: aqua;
+    background-color: rgb(171, 220, 232);
     
 }
  .movie-con{
@@ -55,22 +55,24 @@ input{
    
   .box {
     position: relative;
-    width: 70%;
+    width: 82%;
     margin: 0 auto;
     height: auto;
-    max-height: 70vh;
-    margin-top: 70px;
+    max-height: 92vh;
+    margin-top: 50px;
     background: #fff;
     border-radius: 4px;
     padding: 20px;
     border: 1px solid ;
     overflow: auto;
+    background-color: rgb(233, 213, 219);
+    
   }
 
   .close-icon {
     position: fixed;
-    right: 160px;
-    top: 70px;
+    right: 85px;
+    top: 30px;
     background: red;
     width: 25px;
     height: 25px;
@@ -80,3 +82,24 @@ input{
     border: 1px solid #999;
     font-size: 20px;
   }
+  .search-btn{
+      font-size: 1.2rem;
+      border-radius: 10%;
+      background-color: cornflowerblue;
+      font-style:normal;
+  }
+  .popup-win{
+      display: flex;
+      justify-content: space-between;
+  }
+  .popup-img{
+      height: 85vh;
+      width: 35vw;
+      border-radius: 10%;
+  }
+  .h3tag{
+      font-style: italic}
+    .h4tag{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-size: small;
+    }  

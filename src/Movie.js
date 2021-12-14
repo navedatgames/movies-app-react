@@ -11,6 +11,7 @@ let Movie = ()=>{
     const [id,setId] = React.useState("")
     const[singleMovie,setSingleMovie] = React.useState("")
     const[toggle,setToggle] = React.useState(false);
+    const[search,setSearch] = React.useState("");
 
     const singleMovieApi ="https://api.themoviedb.org/3/movie/" + id + "?api_key=" +api_key
    React.useEffect(()=>{
@@ -28,17 +29,23 @@ let Movie = ()=>{
     React.useEffect(()=>{
         axios.get(apiLink,{
             params:{api_key:"7dace42adcf0a600e4d6ac94b9835856",
-                    query:data||"Avengers"}
+                    query:search||"Avengers"}
         }).then((response)=>{
             setMov(response.data)
         }).catch((reject)=>{
             console.log(reject.data)
         })
 
-    },[data])
+    },[search])
    
-    function handleKeyDown(event){
+    function inputData(event){
         setData(event.target.value)
+    }
+    function handleKeyDown(){
+       
+     setSearch(data)
+      
+       
     }
     function togglefun(){
         setToggle(!toggle)
@@ -48,37 +55,29 @@ let Movie = ()=>{
   console.log(singleMovieApi)
   console.log(singleMovie)
     
-    const singleMovieDetail = Object.keys(singleMovie).map(function(key,index){
+    const singleMovieDetail = (
         
-            if(key=== "original_title")
-            return(
-            <h3>title:{singleMovie[key]}</h3>
-            )
-            if(key=== "id")
-            return(
-            <h3>id:{singleMovie[key]}</h3>
-            )
-
+            <div className = "popup-win">
+                 <div> 
+                    <h1>{singleMovie['original_title']}</h1>
+                    <h3>{singleMovie['release_date']}</h3>
+                    <h3 className="h3tag">{singleMovie['tagline']}</h3>
+                    <br/>
+                   
+                    <h3>OVERVIEW</h3>
+                    <h4 className="h4tag">{singleMovie['overview']}</h4>
+                    <br/>
+                    <h3>Vote:{singleMovie['vote_count']}</h3>
+                    
+                    <h3>popularity:{singleMovie['popularity']}</h3>
+                </div>
+                <div>
+                    <img src = {"https://image.tmdb.org/t/p/w500" + singleMovie['poster_path']} className="popup-img"></img>
+                </div>
             
-            if(key=== "popularity")
-            return(
-            <h3>popularity:{singleMovie[key]}</h3>
-            )
-            if(key=== "release_date")
-            return(
-            <h3>Release Date:{singleMovie[key]}</h3>
-            )
-            if(key=== "tagline")
-            return(
-            <h3>Tags:{singleMovie[key]}</h3>
-            )
-
-            if(key=== "vote_count")
-            return(
-            <h3>Vote:{singleMovie[key]}</h3>
+            </div>
             )
             
-        })
        
     
 	
@@ -104,13 +103,17 @@ let Movie = ()=>{
             <div className = "input-con">
             
                 <input
+                className="search"
                 type="text"
                 placeholder="Search Movie"
-                onChange={handleKeyDown}
+                onChange={inputData}
                 value = {data}
                 
                 
                 />
+                <span>
+                    <button onClick = {handleKeyDown}  className="search-btn">Search</button>
+                </span>
                
             </div>
            
