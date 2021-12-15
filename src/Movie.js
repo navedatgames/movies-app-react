@@ -2,6 +2,7 @@ import React from "react"
 import "./style.css"
 import Popup from "./Popup"
 import axios from "axios"
+import Card from "./Card"
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 const api_key = "7dace42adcf0a600e4d6ac94b9835856"
 let Movie = ()=>{
@@ -44,12 +45,11 @@ let Movie = ()=>{
     function handleKeyDown(){
        
      setSearch(data)
-      
-       
     }
     function togglefun(){
         setToggle(!toggle)
     }
+    
     
    
   console.log(singleMovieApi)
@@ -72,7 +72,7 @@ let Movie = ()=>{
                     <h3>popularity:{singleMovie['popularity']}</h3>
                 </div>
                 <div>
-                    <img src = {"https://image.tmdb.org/t/p/w500" + singleMovie['poster_path']} className="popup-img"></img>
+                    <img src = {"https://image.tmdb.org/t/p/w500" + singleMovie['poster_path'] } alt = "image not found" className="popup-img"></img>
                 </div>
             
             </div>
@@ -83,49 +83,52 @@ let Movie = ()=>{
 	
 		
   
-   const movieShow = mov?.results?.map((obj)=>{
+
+
+   const movieCard = mov?.results?.map((item)=>{
        return(
-           <div className = "inner-con">
-           <h4>id:{obj.id}</h4>
-           <h4>movie name:{obj.original_title}</h4>
-           <h4>release date:{obj.release_date}</h4> 
-            <img onMouseEnter = {()=>{setId(obj.id)}} onClick = {togglefun}src = {"https://image.tmdb.org/t/p/w500"+obj.backdrop_path }alt = "Sorry Image Not Found !!"></img>
-            <br/>
-           </div>
+           <Card 
+           title = {item.original_title}
+           release = {item.release_date}
+           image = {item.poster_path}
+           overview = {item.overview}
+           mouseHandle = {()=>{setId(item.id)}}
+           click = {togglefun}
+          
+           />
        )
    })
         
         
  
     return (
-        <div className = "main-body">
-            <h1>Movies App</h1>
-            <div className = "input-con">
+        <div>
+            <div className = "main-body">
+                <h1>Movies App</h1>
+                <div className = "input-con">
             
-                <input
-                className="search"
-                type="text"
-                placeholder="Search Movie"
-                onChange={inputData}
-                value = {data}
-                
-                
-                />
-                <span>
-                    <button onClick = {handleKeyDown}  className="search-btn">Search</button>
-                </span>
-               
+                    <input
+                    className="search"
+                    type="text"
+                    placeholder="Search Movie"
+                    onChange={inputData}
+                    value = {data}/>
+                    <span>
+                        <button onClick = {handleKeyDown}  className="search-btn">Search</button>
+                    </span>
+                </div>
             </div>
-           
+
             <div className = "movie-con">
-                {movieShow}
+                {movieCard}
                 {toggle && <Popup content = {singleMovieDetail}
                             handleClose = {togglefun} />}
             </div>
+        </div>
     
            
 	
-        </div>
+        
     )
 }
 export default Movie
