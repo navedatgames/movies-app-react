@@ -3,6 +3,8 @@ import "./style.css"
 import Popup from "./Popup"
 import axios from "axios"
 import Card from "./Card"
+import SingleMovie from "./SingleMovie"
+
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 const api_key = "7dace42adcf0a600e4d6ac94b9835856"
 let Movie = ()=>{
@@ -20,6 +22,7 @@ let Movie = ()=>{
            params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
        })
        .then((response)=>{
+           console.log(response.data)
            setSingleMovie(response.data)
        })
        .catch((reject)=>{
@@ -52,8 +55,7 @@ let Movie = ()=>{
     
     
    
-  console.log(singleMovieApi)
-  console.log(singleMovie)
+ 
     
     const singleMovieDetail = (
         
@@ -77,9 +79,15 @@ let Movie = ()=>{
             
             </div>
             )
+
+            console.log(singleMovie)
             
        
     
+        
+            
+        
+   
 	
 		
   
@@ -88,14 +96,15 @@ let Movie = ()=>{
    const movieCard = mov?.results?.map((item)=>{
        return(
            <Card 
+           id = {item.id}
            title = {item.original_title}
            release = {item.release_date}
            image = {item.poster_path}
            overview = {item.overview}
            mouseHandle = {()=>{setId(item.id)}}
-           click = {togglefun}
-          
-           />
+           toggleHandler = {togglefun}
+           sinMov = {singleMovieDetail}
+          />
        )
    })
         
@@ -121,8 +130,7 @@ let Movie = ()=>{
 
             <div className = "movie-con">
                 {movieCard}
-                {toggle && <Popup content = {singleMovieDetail}
-                            handleClose = {togglefun} />}
+                {<SingleMovie content = {singleMovie}/>}
             </div>
         </div>
     
