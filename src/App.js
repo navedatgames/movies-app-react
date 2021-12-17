@@ -1,23 +1,23 @@
 import Movie from "./Movie"
+import {
+  BrowserRouter as Router,
+  Route,Link,Switch
+} from "react-router-dom";
 import SingleMovie from "./SingleMovie"
-import { BrowserRouter as Router,
-  Switch,
-  Route,
-  Link} from "react-router-dom"
 let App=()=> {
   return (
-    <Router >
-       <Switch>
-          <Route exact path="/">
-            <Movie/>
-          </Route>
-
-          <Route path="/abc">
-            <SingleMovie />
-          </Route>
+    
+      <Router>
+          <Link to = "/">Movie</Link>
           
-        </Switch>
-    </Router>
+          <Switch>
+              <Route exact path="/"><Movie/></Route>
+              <Route path="/SingleMovie"><SingleMovie/></Route>
+          </Switch>
+          
+  
+      </Router>
+    
   );
 }
 
