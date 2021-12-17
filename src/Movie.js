@@ -8,32 +8,31 @@ import SingleMovie from "./SingleMovie"
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 const api_key = "7dace42adcf0a600e4d6ac94b9835856"
-let Movie = ()=>{
+let Movie = (props)=>{
    
     const [mov,setMov] = useState("")
     const[data,setData]  = useState()
-    const [id,setId] = useState("")
+    
     const[singleApi,setSingleApi] = useState("")
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
 
-    const singleMovieApi ="https://api.themoviedb.org/3/movie/" + id + "?api_key=" +api_key
-   useEffect(()=>{
-       axios.get(singleMovieApi,{
-           params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
-       })
-       .then((response)=>{
-           console.log(response.data)
-           setSingleApi(response.data)
-       })
-       .catch((reject)=>{
-           console.log(reject.data)
-       })
-   },[id])
+    //const singleMovieApi ="https://api.themoviedb.org/3/movie/" + id + "?api_key=" +api_key
+//    useEffect(()=>{
+//        axios.get(singleMovieApi,{
+//            params:{api_key:"7dace42adcf0a600e4d6ac94b9835856"}
+//        })
+//        .then((response)=>{
+//            console.log(response.data)
+//            setSingleApi(response.data)
+//        })
+//        .catch((reject)=>{
+//            console.log(reject.data)
+//        })
+//    },[id])
 
-   console.log(id)
-   console.log(singleApi)
    
+//    console.log(singleApi)
     useEffect(()=>{
         axios.get(apiLink,{
             params:{api_key:"7dace42adcf0a600e4d6ac94b9835856",
@@ -84,17 +83,6 @@ let Movie = ()=>{
             </div>
             )
 
-           
-            
-       
-    
-        
-            
-        
-   
-	
-		
-  
 
 
    const movieCard = mov?.results?.map((item)=>{
@@ -106,7 +94,7 @@ let Movie = ()=>{
            image = {item.poster_path}
            overview = {item.overview}
           // mouseHandle = {()=>{setId(item.id)}}
-          setId = {setId}
+        //    setId = {setId}
            toggleHandler = {togglefun}
            
           />

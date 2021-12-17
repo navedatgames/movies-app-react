@@ -7,15 +7,14 @@ let Card = (props)=>{
     
     function push(){
       
-        props.setId(props.id)
-        console.log("data id");
+        console.log(props.id)
         
     }
     
     
     return(
         <div className="card" >
-            <img src = {"https://image.tmdb.org/t/p/w500"+props.image} onClick = {push} alt = "image not found!!" id="movie-img"/>
+           <Link to ="/SingleMovie"> <img src = {"https://image.tmdb.org/t/p/w500"+props.image} onClick = {push} alt = "image not found!!" id="movie-img"/></Link>
            
             <div className="mov-detail">
                 <h2>{props.title}</h2>
