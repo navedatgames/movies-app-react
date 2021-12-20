@@ -1,10 +1,7 @@
 import React,{useState,useEffect} from "react"
 import "./style.css"
 import axios from "axios"
-import {
-  BrowserRouter as Router,
-  Route,Link,Switch
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 const api_key = "7dace42adcf0a600e4d6ac94b9835856"
@@ -46,7 +43,6 @@ let Movie = ()=>{
     function setIdHandler(){
         console.log("I was clicked")
     }
-    
     console.log(mov)
    
  

@@ -4,6 +4,7 @@ import {
   Route,Link,Switch
 } from "react-router-dom";
 import SingleMovie from "./SingleMovie"
+import SinglePeople from "./SinglePeople"
 let App=()=> {
   return (
     
@@ -15,6 +16,9 @@ let App=()=> {
               </Route>
               <Route path = "/single-movie/:id">
                 <SingleMovie/>
+              </Route>
+              <Route path = "/single-people/:genre">
+                <SinglePeople/>
               </Route>
           </Switch>
           

@@ -1,12 +1,16 @@
 import React , {useState,useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import axios from "axios"
 
-const SingleMovie = ()=>{
+
+const SingleMovie =  ()=>{
     const [data,setData] = useState("");
+    const [genre,setGenre] = useState("")
     const {id} = useParams();
     const Movie_API = "https://api.themoviedb.org/3/movie/"+id;
+    const [genid,setGenId] = useState("")
     
+    console.log(id)
     useEffect(()=>{
         return axios.get(Movie_API,{
             params:{
@@ -14,13 +18,19 @@ const SingleMovie = ()=>{
             }
         }).then((response)=>{
             setData(response.data)
-            console.log(response.data)
         }).catch((error)=>{
             console.log(error.message)
         })
     },[id])
 
-    const {original_title,overview,popularity,tagline,vote_average,vote_count,poster_path,backdrop_path,budget,release_date} = data
+  console.log(data.genres)
+    
+    const {original_title,overview,popularity,tagline,vote_average,vote_count,poster_path,backdrop_path,budget,release_date,homepage
+    ,production_companies,genres} = data
+    
+  
+    let result = genres.map(a => a.id);
+    console.log(result)
     return(
         <div className="main-div"> 
             <div>
@@ -32,6 +42,12 @@ const SingleMovie = ()=>{
                 <h4 className="h4tag">Popularity: {popularity}</h4>
                 <h4 className="h4tag">Budget: {budget}</h4>
                 <h4 className="h4tag">{overview}</h4>
+                <a href = {homepage}><button className = "btn-type" type = "submit">SEE NOW</button></a>
+                <Link to = {"/single-people/" + 12}><h2>Genres</h2></Link>
+                
+                
+
+
              </div>
             <div>
                 <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + poster_path} />
