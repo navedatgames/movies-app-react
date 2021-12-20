@@ -8,8 +8,7 @@ let App=()=> {
   return (
     
       <Router>
-          <Link to = "/">Movie</Link>
-          {/* <Link to = "/single-movie"> SingleMovie </Link> */}
+          <Link to = "/"></Link>
           <Switch>
               <Route exact path="/">
                 <Movie/>

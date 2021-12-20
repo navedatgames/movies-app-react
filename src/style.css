@@ -92,15 +92,7 @@ input{
       background-color: cornflowerblue;
       font-style:normal;
   }
-  .popup-win{
-      display: flex;
-      justify-content: space-between;
-  }
-  .popup-img{
-      height: 85vh;
-      width: 35vw;
-      border-radius: 10%;
-  }
+  
   .h3tag{
       font-style: italic}
     .h4tag{
@@ -111,7 +103,7 @@ input{
    #movie-img{
         border-radius: 6%;
         cursor: pointer;
-        height:140px;
+        height: 145px;
         width: 140px;
         
        
@@ -120,31 +112,36 @@ input{
         opacity: .5;
         background-color: white;
     }
-    .card{
+    
+  
+   
+
+
+   
+    
+    #movie-container{
+        
         background-color:rgb(255, 255, 255);
         
-        border-radius: 2%;
+        border-radius: 4%;
         display: flex;
         margin: 20px;
         height: 142px;
         overflow: hidden;
         box-shadow: 0 4px 8px 0 rgba(10, 10, 10, 0.2);
         transition: 0.3s;
-        
     }
-    .card:hover{
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
-    .mov-detail{
-        padding: 2px;
-    }
+    .mov-text{
+        padding:2px;
+       }
+       .mov-detail{
+           padding: 5px;
+       }
+       .main-div{
+           display: flex;
+       }
+       .single-img{
+           border-radius: 8%;
+           height: 90vh;
 
-
-    #movie-container img{
-        height: 12rem;
-        width: 12rem;
-    }
-    
-    #movie-container{
-        border: 2px solid red;
-    }
+       }

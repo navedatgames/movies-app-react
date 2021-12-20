@@ -6,7 +6,7 @@ const SingleMovie = ()=>{
     const [data,setData] = useState("");
     const {id} = useParams();
     const Movie_API = "https://api.themoviedb.org/3/movie/"+id;
-    console.log(id);
+    
     useEffect(()=>{
         return axios.get(Movie_API,{
             params:{
@@ -20,20 +20,24 @@ const SingleMovie = ()=>{
         })
     },[id])
 
-    const {original_title,overview,popularity} = data
-
-    console.log(data);
-    // const singleMovieDetail = data?.map((el)=>(
-    //     <div>
-    //         <h1>{el.original_title}</h1>
-    //         <h1>{el.overview}</h1>
-    //     </div>
-    // ))
+    const {original_title,overview,popularity,tagline,vote_average,vote_count,poster_path,backdrop_path,budget,release_date} = data
     return(
-        <> 
-            <h1>{original_title}</h1>
-            <h2>{overview}</h2>
-        </>
+        <div className="main-div"> 
+            <div>
+                <h1>{original_title}</h1>
+                <h2>{release_date}</h2>
+                <h3 className="h3tag">{tagline}</h3>
+                <h4 className="h4tag">Vote Average: {vote_average}</h4>
+                <h4 className="h4tag">Vote Count: {vote_count}</h4>
+                <h4 className="h4tag">Popularity: {popularity}</h4>
+                <h4 className="h4tag">Budget: {budget}</h4>
+                <h4 className="h4tag">{overview}</h4>
+             </div>
+            <div>
+                <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + poster_path} />
+            </div>
+            
+        </div>
     )
 }
 
