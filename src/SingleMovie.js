@@ -1,36 +1,40 @@
-import React from "react"
+import React , {useState,useEffect} from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios"
 
-let SingleMovie = (props)=>{
-    
+const SingleMovie = ()=>{
+    const [data,setData] = useState("");
+    const {id} = useParams();
+    const Movie_API = "https://api.themoviedb.org/3/movie/"+id;
+    console.log(id);
+    useEffect(()=>{
+        return axios.get(Movie_API,{
+            params:{
+                api_key:"7dace42adcf0a600e4d6ac94b9835856"
+            }
+        }).then((response)=>{
+            setData(response.data)
+            console.log(response.data)
+        }).catch((error)=>{
+            console.log(error.message)
+        })
+    },[id])
+
+    const {original_title,overview,popularity} = data
+
+    console.log(data);
+    // const singleMovieDetail = data?.map((el)=>(
+    //     <div>
+    //         <h1>{el.original_title}</h1>
+    //         <h1>{el.overview}</h1>
+    //     </div>
+    // ))
     return(
-        <div className="container">
-            
-            <h1>Single Movie Detail</h1>
-
-            <div className = "popup-win">
-                 <div> 
-                    <h1>movie name</h1>
-                    <h3>release date</h3>
-                    <h3 className="h3tag">tags</h3>
-                    <br/>
-                   
-                    <h3>OVERVIEW</h3>
-                    <h4 className="h4tag">overview parts</h4>
-                    <br/>
-                    <h3>Vote:count</h3>
-                    
-                    <h3>popularity:</h3>
-                </div>
-                <div>
-                    <img src = "" alt = "image not found" className="popup-img"></img>
-                </div>
-            
-            </div>
-
-
-           
-        </div>
+        <> 
+            <h1>{original_title}</h1>
+            <h2>{overview}</h2>
+        </>
     )
 }
 
-export default SingleMovie
+export default SingleMovie;

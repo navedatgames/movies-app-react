@@ -138,4 +138,13 @@ input{
     .mov-detail{
         padding: 2px;
     }
+
+
+    #movie-container img{
+        height: 12rem;
+        width: 12rem;
+    }
     
+    #movie-container{
+        border: 2px solid red;
+    }
