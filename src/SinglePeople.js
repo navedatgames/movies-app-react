@@ -9,7 +9,7 @@ const SinglePeople = ()=>{
     const People_Api = "https://api.themoviedb.org/3/person/"+genre;
 
     useEffect(()=>{
-        return axios.get(People_Api,{
+         axios.get(People_Api,{
             params:{
                 api_key:"7dace42adcf0a600e4d6ac94b9835856",
                 language:"en-US"
@@ -28,10 +28,12 @@ const SinglePeople = ()=>{
             <h1>{name}</h1>
             <h3 className="h3tag">Birth Place: {place_of_birth}</h3>
             <h3 className="h3tag">DOB: {birthday}</h3>
+            <br/>
+            <h2>Biography:</h2>
             <h4 className="h4tag"> {biography}</h4>
         </div>
         <div>
-        <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + profile_path} />
+        <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>
         </div>
         </div>
     )
