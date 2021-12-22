@@ -112,6 +112,10 @@ input{
         opacity: .5;
         background-color: white;
     }
+    #cover-img:hover{
+        opacity: .5;
+        background-color: white;
+    }
     
   
    
@@ -142,9 +146,21 @@ input{
        }
        .single-img{
            border-radius: 8%;
-           height: 90vh;
+           height: 67vh;
 
        }
        .btn-type{
            font-size :large;
        }
+       .cast-image {
+        height: 200px;
+        border-radius: 10%;
+        margin: 8px;
+    }
+    .cast-image:hover{
+        opacity: .5;
+        background-color: white;
+    }
+    .cast-tag{
+        text-align: center;
+    }

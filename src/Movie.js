@@ -14,7 +14,6 @@ let Movie = ()=>{
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
 
-   console.log(id)
 
    
     useEffect(()=>{

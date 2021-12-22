@@ -17,7 +17,7 @@ let App=()=> {
               <Route path = "/single-movie/:id">
                 <SingleMovie/>
               </Route>
-              <Route path = "/single-people/:genre">
+              <Route path = "/single-people/:castId">
                 <SinglePeople/>
               </Route>
           </Switch>
