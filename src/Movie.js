@@ -4,6 +4,13 @@ import axios from "axios"
 import {Link} from "react-router-dom";
 import {Button,Typography} from '@mui/material';
 
+// const useStyles = makeStyles({
+//     movieStyle:{
+//         fontSize:"30px",
+//         color:"red"
+//     }
+// })
+
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 
 let Movie = ()=>{
@@ -75,7 +82,12 @@ let Movie = ()=>{
     return (
         <div>
             <div className = "main-body">
-               <h1>Movies App</h1>
+                <Typography 
+                //className = {classes.movieStyle}
+                variant = "h4">
+                    Movies App
+                </Typography>
+              
                 <div className = "input-con">
             
                     <input
