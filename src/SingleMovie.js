@@ -46,19 +46,17 @@ const SingleMovie =  ()=>{
 
     const castName = cast?.map(a=>{
         return(
-            <Link to = {"/single-people/" + a.id}>
-                <img className = "cast-image" src = {"https://image.tmdb.org/t/p/w500" + a.profile_path}></img>
-            </Link>
+              
+            <div className="img-cont">
+                 <Link to = {"/single-people/" + a.id}><img className = "cast-image" src = {"https://image.tmdb.org/t/p/w500" + a.profile_path} alt= "sorry no image found!!"></img>    </Link>   
+                 <p id = "htag">{a.name}</p>
+            </div>
+            
             
         )
     })
     
-    // const genVal = genres?.map(a=>{
-    //     return(
-
-    //         <Link to = {"/single-people/" + a.id}><h2>{a.id}</h2></Link>        
-    //     )
-    //     })
+   
 
 
   
@@ -78,12 +76,13 @@ const SingleMovie =  ()=>{
                     
                 </div>
                 <div>
-                <a href = {homepage}><img className="single-img" id = "cover-img" src = {"https://image.tmdb.org/t/p/w500" + poster_path} /></a>
+                  <a href = {homepage}><img className="single-img" id = "cover-img" src = {"https://image.tmdb.org/t/p/w500" + poster_path} /></a>
                 </div>
             </div>
-            <div>
-                <br/>
-                <h2 className="cast-tag">CASTS:</h2>
+            <br/>
+            <h2 className="cast-tag">CASTS:</h2>
+            <div className="container">
+                
                     {castName}
             </div>
         </>

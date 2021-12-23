@@ -2,9 +2,10 @@ import React,{useState,useEffect} from "react"
 import "./style.css"
 import axios from "axios"
 import {Link} from "react-router-dom";
+import {Button,Typography} from '@mui/material';
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
-const api_key = "7dace42adcf0a600e4d6ac94b9835856"
+
 let Movie = ()=>{
    
     const [mov,setMov] = useState("")
@@ -74,7 +75,7 @@ let Movie = ()=>{
     return (
         <div>
             <div className = "main-body">
-                <h1>Movies App</h1>
+               <h1>Movies App</h1>
                 <div className = "input-con">
             
                     <input
