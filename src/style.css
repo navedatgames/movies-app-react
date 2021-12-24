@@ -17,21 +17,13 @@ body{
     flex-wrap: wrap;
     
 } 
-.input-con{
-    text-align: center;
-    margin-top: 20px;
-}
+
 input{
     margin: 20px;
     font-size: 20px;
     text-indent: 50px;
 }
-.main-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
+
 .movieCover{
     border-radius: 10px;
     display:flex;

@@ -1,9 +1,17 @@
 import React , {useState,useEffect} from "react";
 import { useParams,Link } from "react-router-dom";
 import axios from "axios"
-
-
+import {makeStyles} from '@mui/styles'
+import { Typography } from '@mui/material';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+const useStyles = makeStyles({
+   
+})
 const SingleMovie =  ()=>{
+    const classes = useStyles()
     const [data,setData] = useState("");
     const [castId,setCastId] = useState("")
     const {id} = useParams();
@@ -65,14 +73,38 @@ const SingleMovie =  ()=>{
         <>
             <div className="main-div"> 
                 <div>
-                    <h1>{original_title}</h1>
-                    <h2>{release_date}</h2>
-                    <h3 className="h3tag">{tagline}</h3>
-                    <h4 className="h4tag">Vote Average: {vote_average}</h4>
-                    <h4 className="h4tag">Vote Count: {vote_count}</h4>
-                    <h4 className="h4tag">Popularity: {popularity}</h4>
-                    <h4 className="h4tag">Budget: {budget}</h4>
-                    <h4 className="h4tag">{overview}</h4>
+                    <Typography variant = "h3">
+                        {original_title}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h5">
+                        {release_date}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h5">
+                        {tagline}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h6">
+                        Vote Average: {vote_average}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h6">
+                    Vote Count: {vote_count}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h6">
+                    Popularity: {popularity}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h6">
+                    Budget: {budget}
+                    </Typography>
+                    <br/>
+                    <Typography  variant = "h6">
+                        {overview}
+                    </Typography>
+                
                     
                 </div>
                 <div>

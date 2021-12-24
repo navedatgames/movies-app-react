@@ -3,18 +3,29 @@ import "./style.css"
 import axios from "axios"
 import {Link} from "react-router-dom";
 import {Button,Typography} from '@mui/material';
+import {makeStyles} from '@mui/styles';
+const useStyles = makeStyles({
+    movieStyle:{
+        color:"red"
+    },
+    mainBodyStyle:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    inputCont:{
 
-// const useStyles = makeStyles({
-//     movieStyle:{
-//         fontSize:"30px",
-//         color:"red"
-//     }
-// })
+        textAlign:'center',
+        marginTop:'20px'
+    }
+   
+})
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
 
 let Movie = ()=>{
-   
+    const classes = useStyles();
     const [mov,setMov] = useState("")
     const[data,setData]  = useState()
     const [id,setId] = useState("")
@@ -50,7 +61,6 @@ let Movie = ()=>{
     function setIdHandler(){
         console.log("I was clicked")
     }
-    console.log(mov)
    
  
     
@@ -81,14 +91,14 @@ let Movie = ()=>{
  
     return (
         <div>
-            <div className = "main-body">
+            <div className= {classes.mainBodyStyle}>
                 <Typography 
-                //className = {classes.movieStyle}
+                className = {classes.movieStyle}
                 variant = "h4">
                     Movies App
                 </Typography>
               
-                <div className = "input-con">
+                <div className={classes.inputCont}>
             
                     <input
                     className="search"
@@ -97,7 +107,7 @@ let Movie = ()=>{
                     onChange={inputData}
                     value = {data}/>
                     <span>
-                        <button onClick = {handleKeyDown}  className="search-btn">Search</button>
+                        <Button onClick = {handleKeyDown} variant = "contained" color = "primary" size = "small">SEARCH</Button>
                     </span>
                 </div>
             </div>
