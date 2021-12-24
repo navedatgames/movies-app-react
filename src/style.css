@@ -133,9 +133,7 @@ input{
        .mov-detail{
            padding: 5px;
        }
-       .main-div{
-           display: flex;
-       }
+       
        .single-img{
            border-radius: 8%;
            height: 67vh;

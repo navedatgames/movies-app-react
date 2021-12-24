@@ -8,7 +8,16 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 const useStyles = makeStyles({
-   
+   tagLine:{
+        fontStyle:'italic'
+   },
+   mainDiv:{
+       display:'flex'
+   },
+   castNameStyle:{
+    color:'whitesmoke',
+    textAlign: 'center'
+   }
 })
 const SingleMovie =  ()=>{
     const classes = useStyles()
@@ -57,7 +66,10 @@ const SingleMovie =  ()=>{
               
             <div className="img-cont">
                  <Link to = {"/single-people/" + a.id}><img className = "cast-image" src = {"https://image.tmdb.org/t/p/w500" + a.profile_path} alt= "sorry no image found!!"></img>    </Link>   
-                 <p id = "htag">{a.name}</p>
+                 <Typography className={classes.castNameStyle}>
+                     {a.name}
+                 </Typography>
+    
             </div>
             
             
@@ -71,7 +83,7 @@ const SingleMovie =  ()=>{
     
     return(
         <>
-            <div className="main-div"> 
+            <div className={classes.mainDiv}> 
                 <div>
                     <Typography variant = "h3">
                         {original_title}
@@ -81,7 +93,7 @@ const SingleMovie =  ()=>{
                         {release_date}
                     </Typography>
                     <br/>
-                    <Typography  variant = "h5">
+                    <Typography className = {classes.tagLine} variant = "h5">
                         {tagline}
                     </Typography>
                     <br/>
