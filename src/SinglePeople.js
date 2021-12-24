@@ -45,7 +45,7 @@ const SinglePeople = ()=>{
             </>
         </div>
         <div>
-        <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>
+            <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>
         </div>
         </div>
     )

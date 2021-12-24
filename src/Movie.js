@@ -4,9 +4,10 @@ import axios from "axios"
 import {Link} from "react-router-dom";
 import {Button,Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
+
 const useStyles = makeStyles({
     movieStyle:{
-        color:"red"
+        color:"black"
     },
     mainBodyStyle:{
         display:'flex',
@@ -18,8 +19,28 @@ const useStyles = makeStyles({
 
         textAlign:'center',
         marginTop:'20px'
+    },
+    movieContainer:{
+        backgroundColor:'rgb(30,66,77)',
+        margin:'20px',
+        borderRadius:'2%',
+        height:'24rem',
+        width:'14rem'
+    },
+    movieImg:{
+        borderRadius:'4%',
+        cursor:'pointer',
+        height:'80%',
+        width:'90%',
+        margin:'10px',
+        "&:hover": {
+            opacity:'.5',
+            backgroundColor:'white'
+          }
     }
    
+   
+    
 })
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
@@ -58,34 +79,29 @@ let Movie = ()=>{
         setToggle(!toggle)
     }
 
-    function setIdHandler(){
-        console.log("I was clicked")
-    }
-   
- 
-    
-  
-
 
    const movieCard = mov?.results?.map((el,pos)=>(
        
-        <div key = {pos} id = "movie-container" >
-            <Link to = {"/single-movie/" + el.id}> 
-                <img 
-                    src = {"https://image.tmdb.org/t/p/w500" + el.poster_path} 
-                    onClick = {()=>{setId(el.id)}} 
-                    alt = "please check your internet connection"
-                    id="movie-img"
-                />
-                </Link>
-                    <div className="mov-text">
-                <h2>{el.original_title}</h2>
-                <h2>{el.release_date}</h2>
-                <p className="mov-detail">{el.overview}</p>
-                </div>
-        </div>
-       
-   ))
+    <div key = {pos} className ={classes.movieContainer} >
+        <Link to = {"/single-movie/" + el.id}> 
+            <img 
+                src = {"https://image.tmdb.org/t/p/w500" + el.poster_path} 
+                onClick = {()=>{setId(el.id)}} 
+                alt = "please check your internet connection"
+                className={classes.movieImg}
+                //id="movie-img"
+            />
+        </Link>
+        <span className="mov-text">
+      <p className="mov-text">
+            {el.original_title}
+            </p>
+        </span>
+           
+
+    </div>
+   
+))
         
         
  
@@ -112,7 +128,7 @@ let Movie = ()=>{
                 </div>
             </div>
 
-            <div className = "main-container">
+            <div className="cont">
                 {movieCard}
             </div>
         </div> 

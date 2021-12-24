@@ -60,8 +60,8 @@ const SingleMovie =  ()=>{
 
     const{cast} = person;
     console.log(cast)
-
-    const castName = cast?.map(a=>{
+    const newCast =cast?.slice(0,11)
+    const castName = newCast?.map(a=>{
         return(
               
             <div className="img-cont">
