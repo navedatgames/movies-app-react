@@ -92,52 +92,18 @@ input{
         font-size: small;
         padding:2px;
     }  
-  
-   
-    #cover-img:hover{
-        opacity: .5;
-        background-color: white;
-    }
+
 
        .mov-detail{
            padding: 5px;
        }
        
-       .single-img{
-           border-radius: 8%;
-           height: 67vh;
-
-       }
        .btn-type{
            font-size :large;
        }
-       .cast-image {
-        height: 200px;
-        border-radius: 5%;
-        margin: 8px;
-    }
-    .cast-image:hover{
-        opacity: .5;
-        background-color: white;
-    }
     .cast-tag{
         text-align: center;
     }
-    .container{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .img-cont{
-        background-color: rgb(75, 51, 51);
-        margin: 20px;
-        border-radius: 2%;
-    }
-
-
-   .cont{
-    display: flex;
-    flex-wrap: wrap;
-   }
 
  
 .mov-text{
@@ -146,8 +112,4 @@ input{
     font-size: 1.1rem;
     margin: 0;
 
-}
-
-.main-div{
-    display: flex;
 }

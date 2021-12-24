@@ -2,7 +2,31 @@ import React , {useState,useEffect} from "react";
 import { useParams,Link } from "react-router-dom";
 import axios from "axios"
 import "./style.css"
+import {makeStyles} from '@mui/styles'
+import { Typography } from "@mui/material";
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+const useStyles = makeStyles({
+    castImage:{
+        borderRadius:'10%',
+        height:'70vh'
+    },
+    castDetails:{
+        fontStyle:'italic'
+    },
+    castBio:{
+        fontStyle:'normal'
+    },
+    mainDiv:{
+        display:'flex'
+    }
+})
 const SinglePeople = ()=>{
+    const classes = useStyles();
     const [peopleData,setPeopleData] = useState("");
     const{castId} = useParams();
 
@@ -29,23 +53,45 @@ const SinglePeople = ()=>{
         )
     })
     return(
-        <div className="main-div">
+        <div className={classes.mainDiv}>
         <div>
-            <h1>{name}</h1>
-            <h3 className="h3tag">Birth Place: {place_of_birth}</h3>
-            <h3 className="h3tag">DOB: {birthday}</h3>
-            <h3 className="h3tag">DEPARTMENT: {known_for_department}</h3>
+            <Typography variant = "h3">
+                {name}
+            </Typography>
             <br/>
-            <h2>Biography:</h2>
-            <h4 className="h4tag"> {biography}</h4>
+            <Typography className = {classes.castDetails} variant = "h5">
+                Birth Place: {place_of_birth}
+            </Typography>
+            <br/>
+            <Typography  className = {classes.castDetails}variant = "h5">
+                DOB: {birthday}
+            </Typography>
+            <br/>
+            <Typography  className = {classes.castDetails}variant = "h5">
+                DEPARTMENT: {known_for_department}
+            </Typography>
+            <br/>
+            
+            <br/>
+            <Typography variant = "h6">
+                Biography:
+            </Typography>
+            <br/>
+            <Typography className = {classes.castBio} variant = "h6">
+                {biography}
+            </Typography>
+    
             <>
             <br/>
-            <h2>TAGS:</h2>
+            <Typography variant = "h5">
+                TAGS:
+            </Typography>
+            <br/>
             {tags}
             </>
         </div>
         <div>
-            <img className="single-img" src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>
+            <img className={classes.castImage} src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>
         </div>
         </div>
     )

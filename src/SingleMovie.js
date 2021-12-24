@@ -17,7 +17,37 @@ const useStyles = makeStyles({
    castNameStyle:{
     color:'whitesmoke',
     textAlign: 'center'
-   }
+   },
+   castStyle:{
+       textAlign:'center'
+   },
+   container:{
+    display:'flex',
+    flexWrap:'wrap'
+   },
+   imageContainer:{
+    backgroundColor:'rgb(75, 51, 51)',
+    margin:'20px',
+    borderRadius:'2%'
+   },
+   singleImage:{
+    borderRadius: '8%',
+    height: '67vh',
+    "&:hover": {
+    opacity:'.5',
+    backgroundColor:'white'
+     }
+   },
+  castImage:{
+    height: '200px',
+    borderRadius: '5%',
+    margin: '8px',
+    "&:hover": {
+    opacity:'.5',
+    backgroundColor:'white'}
+  }
+
+
 })
 const SingleMovie =  ()=>{
     const classes = useStyles()
@@ -64,8 +94,8 @@ const SingleMovie =  ()=>{
     const castName = newCast?.map(a=>{
         return(
               
-            <div className="img-cont">
-                 <Link to = {"/single-people/" + a.id}><img className = "cast-image" src = {"https://image.tmdb.org/t/p/w500" + a.profile_path} alt= "sorry no image found!!"></img>    </Link>   
+            <div className = {classes.imageContainer}>
+                 <Link to = {"/single-people/" + a.id}><img className ={classes.castImage} src = {"https://image.tmdb.org/t/p/w500" + a.profile_path} alt= "sorry no image found!!"></img>    </Link>   
                  <Typography className={classes.castNameStyle}>
                      {a.name}
                  </Typography>
@@ -120,12 +150,15 @@ const SingleMovie =  ()=>{
                     
                 </div>
                 <div>
-                  <a href = {homepage}><img className="single-img" id = "cover-img" src = {"https://image.tmdb.org/t/p/w500" + poster_path} /></a>
+                  <a href = {homepage}><img className={classes.singleImage} src = {"https://image.tmdb.org/t/p/w500" + poster_path} /></a>
                 </div>
             </div>
             <br/>
-            <h2 className="cast-tag">CASTS:</h2>
-            <div className="container">
+            <br/>
+            <Typography className = {classes.castStyle} variant="h4">
+                CASTS:
+            </Typography>
+            <div className = {classes.container}>
                 
                     {castName}
             </div>

@@ -37,6 +37,10 @@ const useStyles = makeStyles({
             opacity:'.5',
             backgroundColor:'white'
           }
+    },
+    movieSingleCard:{
+        display:'flex',
+        flexWrap:'wrap'
     }
    
    
@@ -89,10 +93,9 @@ let Movie = ()=>{
                 onClick = {()=>{setId(el.id)}} 
                 alt = "please check your internet connection"
                 className={classes.movieImg}
-                //id="movie-img"
             />
         </Link>
-        <span className="mov-text">
+        <span>
       <p className="mov-text">
             {el.original_title}
             </p>
@@ -128,7 +131,7 @@ let Movie = ()=>{
                 </div>
             </div>
 
-            <div className="cont">
+            <div className={classes.movieSingleCard}>
                 {movieCard}
             </div>
         </div> 
