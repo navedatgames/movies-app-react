@@ -78,12 +78,7 @@ input{
     border: 1px solid #999;
     font-size: 20px;
   }
-  .search-btn{
-      font-size: 1.2rem;
-      border-radius: 10%;
-      background-color: cornflowerblue;
-      font-style:normal;
-  }
+ 
   
   .h3tag{
       font-style: italic}

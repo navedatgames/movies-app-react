@@ -40,7 +40,16 @@ const useStyles = makeStyles({
     },
     movieSingleCard:{
         display:'flex',
-        flexWrap:'wrap'
+        flexWrap:'wrap',
+        padding:'70px'
+    },
+    btnStyle:{
+        position:'fixed',
+        bottom:'4px',
+        
+    },
+    inputCon:{
+        fontSize:'1.4rem'
     }
    
    
@@ -120,13 +129,13 @@ let Movie = ()=>{
                 <div className={classes.inputCont}>
             
                     <input
-                    className="search"
+                    className={classes.inputCon}
                     type="text"
                     placeholder="Search Movie"
                     onChange={inputData}
                     value = {data}/>
                     <span>
-                        <Button onClick = {handleKeyDown} variant = "contained" color = "primary" size = "small">SEARCH</Button>
+                        <Button className = {classes.btnStyle} onClick = {handleKeyDown} variant = "contained" color = "primary" size = "small">SEARCH</Button>
                     </span>
                 </div>
             </div>
