@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { purple ,blue,
+import {blue,brown
  } from '@mui/material/colors';
 
 const theme = createTheme({
@@ -8,7 +8,7 @@ const theme = createTheme({
       main: blue[500],
     },
     secondary: {
-      main: purple[500],
+      main: brown[500],
     },
   },
 });

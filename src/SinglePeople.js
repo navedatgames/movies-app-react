@@ -45,13 +45,9 @@ const SinglePeople = ()=>{
         })
     },[castId])
     console.log(peopleData);
-    const{name,place_of_birth,biography,birthday,profile_path,known_for_department,also_known_as} = peopleData
+    const{name,place_of_birth,biography,birthday,profile_path,known_for_department} = peopleData
 
-    const tags = also_known_as?.map(a=>{
-        return(
-            <h3>{a}</h3>
-        )
-    })
+    
     return(
         <div className={classes.mainDiv}>
         <div>
@@ -81,14 +77,7 @@ const SinglePeople = ()=>{
                 {biography}
             </Typography>
     
-            <>
-            <br/>
-            <Typography variant = "h5">
-                TAGS:
-            </Typography>
-            <br/>
-            {tags}
-            </>
+            
         </div>
         <div>
             <img className={classes.castImage} src = {"https://image.tmdb.org/t/p/w500" + profile_path} alt = "image not found"/>

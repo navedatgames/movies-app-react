@@ -94,9 +94,9 @@ const SingleMovie =  ()=>{
     const castName = newCast?.map(a=>{
         return(
               
-            <div className = {classes.imageContainer}>
+            <div className = {classes.imageContainer} >
                  <Link to = {"/single-people/" + a.id}><img className ={classes.castImage} src = {"https://image.tmdb.org/t/p/w500" + a.profile_path} alt= "sorry no image found!!"></img>    </Link>   
-                 <Typography className={classes.castNameStyle}>
+                 <Typography className={classes.castNameStyle} >
                      {a.name}
                  </Typography>
     
