@@ -1,0 +1,33 @@
+.page-div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-con{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.inner-page-div{
+    background-color: rgb(235, 151, 151);
+    border-radius: 2%;
+}
+.movie-name{
+    text-align: center;
+}
+#input-bar{
+    text-indent: 6px;
+    font-size: 18px;
+}
+input[type=submit]{
+    
+    
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #ebd8d8;
+ 
+  cursor: pointer;
+}

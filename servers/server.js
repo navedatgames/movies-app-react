@@ -9,6 +9,7 @@ app.use(cors()) // middle ware
 
 mongoose.connect('mongodb+srv://khan:7866@cluster0.kkded.mongodb.net/MoviesApp?retryWrites=true&w=majority')
 app.post('/api/signup',async (req,res)=>{
+    console.log(req.body)
     try{
         const user = await User.create({
             name:req.body.name,
@@ -16,7 +17,9 @@ app.post('/api/signup',async (req,res)=>{
             password:req.body.password
         })
         res.json({
-            status:'ok'
+            status:'ok',
+            email:req.body.email,
+            password:req.body.password
         })
     }
     catch(err){
@@ -34,10 +37,14 @@ app.post('/api/login',async (req,res)=>{
             password:req.body.password
         })
         if(user){
-            return res.json({status:'ok',user:true})
+            return res.json({
+            status:'login successful',
+            user:true,
+            email:req.body.email,
+            password:req.body.password})
         }
         else{
-            return res.json({status:'error',user:false})
+            return res.json({status:'login failed',user:false})
         }
     }
    
@@ -54,6 +61,6 @@ app.use(function(req,res,error,next){
 })
 
 app.listen(4000,()=>{
-    console.log('server started')
+    console.log('server started on 4000')
 })
 

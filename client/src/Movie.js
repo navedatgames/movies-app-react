@@ -92,6 +92,7 @@ let Movie = ()=>{
         setToggle(!toggle)
     }
 
+        console.log(mov)
 
    const movieCard = mov?.results?.map((el,pos)=>(
        

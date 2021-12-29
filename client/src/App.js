@@ -1,18 +1,25 @@
 import Movie from "./Movie"
-import {
-  BrowserRouter as Router,
-  Route,Link,Switch
-} from "react-router-dom";
+import {BrowserRouter as Router,Route,Link,Redirect} from "react-router-dom";
+import {Switch} from "react-router-dom"
 import SingleMovie from "./SingleMovie"
 import SinglePeople from "./SinglePeople"
+import "./style.css"
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
+import Quote from "./pages/Quote"
 let App=()=> {
   return (
     
       <Router>
-          <Link to = "/"></Link>
+          <div className="nav-top">
+          <Link to = "/login" ><button>LOGIN</button></Link>
+          <Link to = "/home" ><button>HOME</button></Link>
+         </div>
+          
           <Switch>
+             
               <Route exact path="/">
-                <Movie/>
+               <Signup/>
               </Route>
               <Route path = "/single-movie/:id">
                 <SingleMovie/>
@@ -20,7 +27,16 @@ let App=()=> {
               <Route path = "/single-people/:castId">
                 <SinglePeople/>
               </Route>
-          </Switch>
+              <Route path = "/login">
+                <Login/>
+              </Route>
+               <Route path = "/home">
+                <Movie/>
+              </Route>
+              <Route path = "/quote">
+                <Quote/>
+              </Route>
+           </Switch>
           
   
       </Router>
@@ -29,3 +45,5 @@ let App=()=> {
 }
 
 export default App;
+
+
