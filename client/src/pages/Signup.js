@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import axios from "axios"
 import "./pageStyle.css"
 import {Link , Redirect} from "react-router-dom"
@@ -9,6 +9,7 @@ function Signup() {
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
   const[confirmPassword,setconpass] = useState('')
+  const[flag,setFlag] = useState(false)
 
   async function submitHandler(event){
     event.preventDefault();
@@ -30,7 +31,8 @@ function Signup() {
           console.log(res)
           if(res.status===200 && res.data.status==='ok'){
            alert(res.status)
-           return <Redirect to='/login' component = {Login} />
+           setFlag(true)
+          
           }
           else{
             alert("please fill all the details")
@@ -43,7 +45,10 @@ function Signup() {
   }
 }
   return (
+    
+    
     <div className="page-div">
+      {flag ?  <Redirect to = {{pathname:"./login"}}/> :null}
     <div className = 'inner-page-div'>
      <h2 className = "movie-name">
       MoviesApp SignUp

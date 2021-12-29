@@ -1,5 +1,5 @@
 import Movie from "./Movie"
-import {BrowserRouter as Router,Route,Link,Redirect} from "react-router-dom";
+import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 import {Switch} from "react-router-dom"
 import SingleMovie from "./SingleMovie"
 import SinglePeople from "./SinglePeople"
