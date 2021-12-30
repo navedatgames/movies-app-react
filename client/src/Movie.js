@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from "react"
 import "./style.css"
 import axios from "axios"
-import {Link} from "react-router-dom";
+import {Link ,useHistory} from "react-router-dom";
 import {Button,Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
-
+const watchlistarr = []
 const useStyles = makeStyles({
     movieStyle:{
         color:"black"
@@ -46,18 +46,32 @@ const useStyles = makeStyles({
     btnStyle:{
         position:'fixed',
         bottom:'4px',
+        margin:'12px'
         
     },
     inputCon:{
         fontSize:'1.4rem'
-    }
-   
+    },
+    logStyle:{
+       position:'fixed',
+       right:'0px',
+       top:'0px'
+    },
+    watchBtn:{
+        textAlign:'right'
+    },
+    userDetails:{
+        borderRadius:'5%',
+        padding:'1px',
+        backgroundColor:'lightBlue',
+        height:'100px',
+        width:'160px'
+    }   
    
     
 })
 
 const apiLink = "https://api.themoviedb.org/3/search/movie"
-
 let Movie = ()=>{
     const classes = useStyles();
     const [mov,setMov] = useState("")
@@ -66,9 +80,10 @@ let Movie = ()=>{
     const[singleApi,setSingleApi] = useState("")
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
+    const[movName,setMovName] = useState('')
 
 
-   
+   const routing = useHistory();
     useEffect(()=>{
         axios.get(apiLink,{
             params:{api_key:"7dace42adcf0a600e4d6ac94b9835856",
@@ -80,7 +95,23 @@ let Movie = ()=>{
         })
 
     },[search])
+   function likedMovie(e){
+    if(localStorage.getItem("email")===null){
+        alert("please login!!")
+    }
+    else{
+       alert("movie added to watchlist")
+       watchlistarr.push(e)
+    }
+       
+
+   }
    
+    function logout(){
+        localStorage.clear();
+        watchlistarr.length = 0
+        routing.push('/login')
+    }
     function inputData(event){
         setData(event.target.value)
     }
@@ -91,12 +122,38 @@ let Movie = ()=>{
     function togglefun(){
         setToggle(!toggle)
     }
+    async function watchListHandler(){
+        if(localStorage.getItem("email")===null){
+            alert("please login!!")
+        }
+        else{
+        alert("all selected movied finally added")
+        try{
+            const res = await axios.post(
+                "http://localhost:4000/api/watchlist",
+                {email:localStorage.getItem("email"),watchlist:watchlistarr},{
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                }
+                
+            )
+            console.log(res)
+        }
+        catch(error){
+            console.log(error.message)
+        }
+    }
+    }
 
-        console.log(mov)
 
    const movieCard = mov?.results?.map((el,pos)=>(
        
     <div key = {pos} className ={classes.movieContainer} >
+        <div className={classes.watchBtn}>
+        <button onClick = {()=>{likedMovie(el.original_title)}}  >Watchlist</button>
+        </div>
+         
         <Link to = {"/single-movie/" + el.id}> 
             <img 
                 src = {"https://image.tmdb.org/t/p/w500" + el.poster_path} 
@@ -106,10 +163,11 @@ let Movie = ()=>{
             />
         </Link>
         <span>
-      <p className="mov-text">
+        <p className="mov-text">
             {el.original_title}
             </p>
         </span>
+       
            
 
     </div>
@@ -120,13 +178,25 @@ let Movie = ()=>{
  
     return (
         <div>
+            <div className = {classes.userDetails}>
+                <h5>User: {localStorage.name}</h5>
+                <h5>Email: {localStorage.email}</h5>
+                
+            </div>
             <div className= {classes.mainBodyStyle}>
+                <div>
                 <Typography 
                 className = {classes.movieStyle}
                 variant = "h4">
                     Movies App
                 </Typography>
-              
+                <span>
+                    <button className={classes.logStyle} onClick = {logout}>
+                        LOGOUT
+                    </button>
+                </span>
+                </div>
+
                 <div className={classes.inputCont}>
             
                     <input
@@ -137,6 +207,10 @@ let Movie = ()=>{
                     value = {data}/>
                     <span>
                         <Button className = {classes.btnStyle} onClick = {handleKeyDown} variant = "contained" color = "primary" size = "small">SEARCH</Button>
+                       
+                    </span>
+                    <span>
+                    <Button className = {classes.btnStyle} onClick = {watchListHandler} variant = "contained" color = "secondary" size = "small">WATCHLIST</Button>
                     </span>
                 </div>
             </div>

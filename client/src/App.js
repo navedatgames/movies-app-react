@@ -11,10 +11,10 @@ let App=()=> {
   return (
     
       <Router>
-          <div className="nav-top">
+          {/* <div className="nav-top">
           <Link to = "/login" ><button>LOGIN</button></Link>
           <Link to = "/home" ><button>HOME</button></Link>
-         </div>
+         </div> */}
           
           <Switch>
              

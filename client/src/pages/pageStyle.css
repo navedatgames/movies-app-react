@@ -13,6 +13,7 @@
 .inner-page-div{
     background-color: rgb(235, 151, 151);
     border-radius: 2%;
+    margin: 40px;
 }
 .movie-name{
     text-align: center;
@@ -30,4 +31,17 @@ input[type=submit]{
     background-color: #ebd8d8;
  
   cursor: pointer;
+}
+.new-user{
+    position: fixed;
+    left: 640px;
+    bottom: 290px;
+    font-size: 12px;
+
+}
+.already-user{
+    position: fixed;
+    left: 640px;
+    bottom: 159px;
+    font-size: 12px;
 }

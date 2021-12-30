@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/user')
+const Watch = require('./models/watch')
 app.use(express.json())
 
 app.use(cors()) // middle ware
@@ -18,6 +19,7 @@ app.post('/api/signup',async (req,res)=>{
         })
         res.json({
             status:'ok',
+            name:req.body.name,
             email:req.body.email,
             password:req.body.password
         })
@@ -30,8 +32,29 @@ app.post('/api/signup',async (req,res)=>{
     
 })
 
-app.post('/api/login',async (req,res)=>{
+app.post('/api/watchlist',async (req,res)=>{
+    console.log(req.body)
+    try{
+        const watch = await Watch.create({
+            email:req.body.email,
+            watchlist:req.body.watchlist
+        })
+        res.json({
+            status:'ok',
+            email:req.body.email,
+            watchlist:req.body.watchlist
+        })
+    }
+    catch(err){
+        res.json({
+            status:'error'
+        })
+    }
     
+})
+
+app.post('/api/login',async (req,res)=>{
+        console.log(req.body)
         const user = await User.findOne({
             email:req.body.email,
             password:req.body.password

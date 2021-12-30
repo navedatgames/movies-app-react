@@ -1,16 +1,15 @@
-import {useEffect, useState} from "react"
+import { useState} from "react"
 import axios from "axios"
 import "./pageStyle.css"
-import {Link , Redirect} from "react-router-dom"
-import Login from "./Login"
+import {Link ,useHistory} from "react-router-dom"
 function Signup() {
 
   const[name,setName] = useState('')
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
   const[confirmPassword,setconpass] = useState('')
-  const[flag,setFlag] = useState(false)
-
+  //const[flag,setFlag] = useState(false)
+  let routing = useHistory()
   async function submitHandler(event){
     event.preventDefault();
     if(password!=confirmPassword){
@@ -30,8 +29,10 @@ function Signup() {
       
           console.log(res)
           if(res.status===200 && res.data.status==='ok'){
-           alert(res.status)
-           setFlag(true)
+           alert("signup successfully")
+           localStorage.setItem("name",res.data.name)
+           routing.push('/login')
+           //setFlag(true)
           
           }
           else{
@@ -48,7 +49,7 @@ function Signup() {
     
     
     <div className="page-div">
-      {flag ?  <Redirect to = {{pathname:"./login"}}/> :null}
+      {/* {flag ?  <Redirect to = {{pathname:"./login"}}/> :null} */}
     <div className = 'inner-page-div'>
      <h2 className = "movie-name">
       MoviesApp SignUp
@@ -77,8 +78,16 @@ function Signup() {
        value = {confirmPassword}
        placeholder="Enter Password Again"
        onChange = {(e)=> setconpass(e.target.value)}/>
-
-       <input id = "input-bar" type = "submit" value = "Submit"/>
+      
+      <div>
+      <input id = "input-bar" type = "submit" value = "Submit"/>
+      <span>
+      <Link to = "/login"><input id = "input-bar" type = "submit" value = "Login"/></Link>
+      <p className = "already-user">Already a User?</p>
+      </span>
+      </div>
+      
+      
      
       </form>
      
