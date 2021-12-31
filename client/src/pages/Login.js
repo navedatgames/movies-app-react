@@ -40,6 +40,12 @@ function Login() {
   }
   
 return (
+  <>
+  <div className="login-part">
+      <Link to = "/"><input className = "login-btn"  type = "submit" value = "Signup"/></Link>
+      
+      <p className="already-user">New User?</p>
+      </div>
     <div className = "page-div">
        {/* {loginFlag ?  <Redirect to = {{pathname:"./home"}}/> :null} */}
     <div className="inner-page-div">
@@ -65,19 +71,16 @@ return (
        </input>
       
 
-      <div>
+      
       <input id = "input-bar" type = "submit" value = "Login"/>
-      <span>
-      <Link to = "/"><input id = "input-bar" type = "submit" value = "Signup"/></Link>
-      <p className = "new-user">New User?</p>
-      </span>
-      </div>
+  
        
       </form>
      
 
     </div>
     </div>
+    </>
   );
 }
 

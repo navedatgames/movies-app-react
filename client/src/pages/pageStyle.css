@@ -18,9 +18,14 @@
 .movie-name{
     text-align: center;
 }
-#input-bar{
+
+.login-btn{
     text-indent: 6px;
     font-size: 18px;
+    margin: 9px;
+}
+#input-bar{
+    text-indent: 6px;
 }
 input[type=submit]{
     
@@ -40,8 +45,12 @@ input[type=submit]{
 
 }
 .already-user{
+   
+    font-size: 14px;
+}
+.login-part{
     position: fixed;
-    left: 640px;
-    bottom: 159px;
-    font-size: 12px;
+    right:0;
+    top:0;
+    display: flex;
 }

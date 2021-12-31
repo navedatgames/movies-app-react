@@ -47,7 +47,12 @@ function Signup() {
 }
   return (
     
-    
+    <>
+    <div className="login-part">
+      <Link to = "/login"><input className = "login-btn"  type = "submit" value = "Login"/></Link>
+      
+      <p className="already-user">Already a User?</p>
+      </div>
     <div className="page-div">
       {/* {flag ?  <Redirect to = {{pathname:"./login"}}/> :null} */}
     <div className = 'inner-page-div'>
@@ -79,13 +84,11 @@ function Signup() {
        placeholder="Enter Password Again"
        onChange = {(e)=> setconpass(e.target.value)}/>
       
-      <div>
+      
       <input id = "input-bar" type = "submit" value = "Submit"/>
-      <span>
-      <Link to = "/login"><input id = "input-bar" type = "submit" value = "Login"/></Link>
-      <p className = "already-user">Already a User?</p>
-      </span>
-      </div>
+      
+      
+    
       
       
      
@@ -94,6 +97,7 @@ function Signup() {
 
     </div>
     </div>
+  </>
   );
 }
 
