@@ -5,6 +5,7 @@ import {Link ,useHistory} from "react-router-dom";
 import {Button,Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
 const watchlistarr = []
+
 const useStyles = makeStyles({
     movieStyle:{
         color:"black"
@@ -66,7 +67,15 @@ const useStyles = makeStyles({
         backgroundColor:'lightBlue',
         height:'100px',
         width:'160px'
-    }   
+    } ,
+    plusBtn:{
+        backgroundColor: 'green',
+        borderRadius: '50%',
+         border: 'none',
+        color: 'white',
+        cursor:' pointer',
+        fontSize:'20px'
+    }  
    
     
 })
@@ -81,7 +90,8 @@ let Movie = ()=>{
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
     const[movName,setMovName] = useState('')
-
+    const[flag,setFlag] = useState(false);
+    const[disable,setDisable] = useState(false)
 
    const routing = useHistory();
     useEffect(()=>{
@@ -95,22 +105,30 @@ let Movie = ()=>{
         })
 
     },[search])
-   function likedMovie(e){
+   function likedMovie(eventname,eventid){
     if(localStorage.getItem("email")===null){
         alert("please login!!")
     }
     else{
-       alert("movie added to watchlist")
-       watchlistarr.push(e)
+       alert("movie added ")
+       watchlistarr.push(eventname)
+       console.log(watchlistarr)
+
+
     }
        
 
    }
    
     function logout(){
+        if(flag){
         localStorage.clear();
         watchlistarr.length = 0
         routing.push('/login')
+        }
+        else{
+            alert("press the watchList button")
+        }
     }
     function inputData(event){
         setData(event.target.value)
@@ -123,11 +141,12 @@ let Movie = ()=>{
         setToggle(!toggle)
     }
     async function watchListHandler(){
+        setFlag(true)
         if(localStorage.getItem("email")===null){
             alert("please login!!")
         }
         else{
-        alert("all selected movied finally added")
+        alert("all selected movies added successfully")
         try{
             const res = await axios.post(
                 "http://localhost:4000/api/watchlist",
@@ -151,14 +170,14 @@ let Movie = ()=>{
        
     <div key = {pos} className ={classes.movieContainer} >
         <div className={classes.watchBtn}>
-        <button onClick = {()=>{likedMovie(el.original_title)}}  >Watchlist</button>
+        <button className = {classes.plusBtn} onClick = {()=>{likedMovie(el.original_title,el.id)}}>+</button>
         </div>
          
         <Link to = {"/single-movie/" + el.id}> 
             <img 
                 src = {"https://image.tmdb.org/t/p/w500" + el.poster_path} 
                 onClick = {()=>{setId(el.id)}} 
-                alt = "please check your internet connection"
+                alt = "image not found!!"
                 className={classes.movieImg}
             />
         </Link>

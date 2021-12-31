@@ -33,23 +33,36 @@ app.post('/api/signup',async (req,res)=>{
 })
 
 app.post('/api/watchlist',async (req,res)=>{
-    console.log(req.body)
-    try{
-        const watch = await Watch.create({
-            email:req.body.email,
-            watchlist:req.body.watchlist
-        })
-        res.json({
-            status:'ok',
-            email:req.body.email,
-            watchlist:req.body.watchlist
-        })
-    }
-    catch(err){
-        res.json({
-            status:'error'
-        })
-    }
+    // const watch = await Watch.findOne({
+    //     email:req.body.email
+    // })
+    // console.log(watch)
+    // console.log(req.body.watchlist)
+    // if(watch){
+    //    console.log("old user")
+       
+    // }
+    // else{
+    //     console.log('new user found')
+
+        try{
+            const watch = await Watch.create({
+                email:req.body.email,
+                watchlist:req.body.watchlist
+            })
+            res.json({
+                status:'ok',
+                email:req.body.email,
+                watchlist:req.body.watchlist
+            })
+        }
+        catch(err){
+            res.json({
+                status:'error'
+            })
+        }
+    
+  
     
 })
 
