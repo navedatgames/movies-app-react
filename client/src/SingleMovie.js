@@ -85,8 +85,7 @@ const SingleMovie =  ()=>{
    },[id])
 
     console.log(person)
-    const {original_title,overview,popularity,tagline,vote_average,vote_count,poster_path,backdrop_path,budget,release_date,homepage
-    ,production_companies,genres} = data
+    const {original_title,overview,popularity,tagline,vote_average,vote_count,poster_path,budget,release_date,homepage} = data
 
     const{cast} = person;
     console.log(cast)

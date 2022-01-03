@@ -7,7 +7,7 @@ const watchSchema = new Schema(
              type:String
         },
         watchlist:{
-             type:Object
+             type:[String]
         }
     },
     {collection:'watchlist-data'}

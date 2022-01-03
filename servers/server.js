@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
-const User = require('./models/user')
+const User = require('./models/UserMovie')
 const Watch = require('./models/watch')
+
 app.use(express.json())
 
 app.use(cors()) // middle ware
@@ -32,36 +33,28 @@ app.post('/api/signup',async (req,res)=>{
     
 })
 
-app.post('/api/watchlist',async (req,res)=>{
-    // const watch = await Watch.findOne({
-    //     email:req.body.email
-    // })
-    // console.log(watch)
-    // console.log(req.body.watchlist)
-    // if(watch){
-    //    console.log("old user")
-       
-    // }
-    // else{
-    //     console.log('new user found')
 
-        try{
-            const watch = await Watch.create({
-                email:req.body.email,
-                watchlist:req.body.watchlist
-            })
-            res.json({
-                status:'ok',
-                email:req.body.email,
-                watchlist:req.body.watchlist
-            })
-        }
-        catch(err){
-            res.json({
-                status:'error'
-            })
-        }
+
+app.post('/api/watchlist',async (req,res)=>{
+   
     
+    try {
+        const watch = await Watch.findOneAndUpdate({
+            email: req.body.email
+        }, {
+            $push: {
+                watchlist: req.body.watchlist
+            }
+        }, { upsert: true });
+    
+        } catch (error) {
+        console.log("my error data=", error);
+        }
+
+    
+    
+
+   
   
     
 })

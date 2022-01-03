@@ -1,5 +1,5 @@
 import React , {useState,useEffect} from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import axios from "axios"
 import "./style.css"
 import {makeStyles} from '@mui/styles'

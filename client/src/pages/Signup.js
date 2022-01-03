@@ -12,7 +12,7 @@ function Signup() {
   let routing = useHistory()
   async function submitHandler(event){
     event.preventDefault();
-    if(password!=confirmPassword){
+    if(password!==confirmPassword){
       console.log("password do not match!!!")
     }
     else{

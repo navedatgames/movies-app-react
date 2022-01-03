@@ -91,7 +91,7 @@ let Movie = ()=>{
     const[search,setSearch] = useState("");
     const[movName,setMovName] = useState('')
     const[flag,setFlag] = useState(false);
-    const[disable,setDisable] = useState(false)
+
 
    const routing = useHistory();
     useEffect(()=>{
@@ -105,12 +105,12 @@ let Movie = ()=>{
         })
 
     },[search])
-   function likedMovie(eventname,eventid){
+   function likedMovie(eventname){
     if(localStorage.getItem("email")===null){
         alert("please login!!")
     }
     else{
-       alert("movie added ")
+       alert("movie added")
        watchlistarr.push(eventname)
        console.log(watchlistarr)
 
@@ -170,7 +170,7 @@ let Movie = ()=>{
        
     <div key = {pos} className ={classes.movieContainer} >
         <div className={classes.watchBtn}>
-        <button className = {classes.plusBtn} onClick = {()=>{likedMovie(el.original_title,el.id)}}>+</button>
+        <button className = {classes.plusBtn} onClick = {()=>{likedMovie(el.original_title)}}>+</button>
         </div>
          
         <Link to = {"/single-movie/" + el.id}> 
