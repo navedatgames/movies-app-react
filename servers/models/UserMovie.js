@@ -11,9 +11,6 @@ const UserSchema= new Schema({
     },
     password:{
         type:'String'
-    },
-    watchlist:{
-       type:[Number]
     }
     },
     {collection:'user-data'}

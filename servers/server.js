@@ -42,7 +42,7 @@ app.post('/api/watchlist',async (req,res)=>{
         const watch = await Watch.findOneAndUpdate({
             email: req.body.email
         }, {
-            $push: {
+            $addToSet: {
                 watchlist: req.body.watchlist
             }
         }, { upsert: true });
@@ -51,12 +51,6 @@ app.post('/api/watchlist',async (req,res)=>{
         console.log("my error data=", error);
         }
 
-    
-    
-
-   
-  
-    
 })
 
 app.post('/api/login',async (req,res)=>{

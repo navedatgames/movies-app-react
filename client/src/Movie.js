@@ -55,8 +55,8 @@ const useStyles = makeStyles({
     },
     logStyle:{
        position:'fixed',
-       right:'0px',
-       top:'0px'
+       left:'0px'
+      
     },
     watchBtn:{
         textAlign:'right'
@@ -64,9 +64,9 @@ const useStyles = makeStyles({
     userDetails:{
         borderRadius:'5%',
         padding:'1px',
-        backgroundColor:'lightBlue',
-        height:'100px',
-        width:'160px'
+        backgroundColor:'lightgreen',
+        height:'50px',
+        width:'180px'
     } ,
     plusBtn:{
         backgroundColor: 'green',
@@ -76,6 +76,10 @@ const useStyles = makeStyles({
         cursor:' pointer',
         fontSize:'20px'
     }  
+    ,navDiv:{
+        display:'flex',
+        justifyContent:'space-between'
+    }
    
     
 })
@@ -86,10 +90,8 @@ let Movie = ()=>{
     const [mov,setMov] = useState("")
     const[data,setData]  = useState()
     const [id,setId] = useState("")
-    const[singleApi,setSingleApi] = useState("")
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
-    const[movName,setMovName] = useState('')
     const[flag,setFlag] = useState(false);
 
 
@@ -111,8 +113,8 @@ let Movie = ()=>{
     }
     else{
        alert("movie added")
-       watchlistarr.push(eventname)
-       console.log(watchlistarr)
+        watchlistarr.push(eventname)
+        console.log(watchlistarr)
 
 
     }
@@ -121,7 +123,7 @@ let Movie = ()=>{
    }
    
     function logout(){
-        if(flag){
+        if(watchlistarr.length==0 || flag){
         localStorage.clear();
         watchlistarr.length = 0
         routing.push('/login')
@@ -197,10 +199,16 @@ let Movie = ()=>{
  
     return (
         <div>
-            <div className = {classes.userDetails}>
-                <h5>User: {localStorage.name}</h5>
-                <h5>Email: {localStorage.email}</h5>
-                
+            <div className = {classes.navDiv}>
+                <div className = {classes.userDetails}>
+                    <h5>Email: {localStorage.email}</h5>
+                </div>
+               
+                <div>
+                    <Button className = {classes.logStyle} onClick = {logout} variant = "contained" color = "error" size = "small" >LOGOUT</Button>
+                </div>  
+
+            
             </div>
             <div className= {classes.mainBodyStyle}>
                 <div>
@@ -209,11 +217,7 @@ let Movie = ()=>{
                 variant = "h4">
                     Movies App
                 </Typography>
-                <span>
-                    <button className={classes.logStyle} onClick = {logout}>
-                        LOGOUT
-                    </button>
-                </span>
+                
                 </div>
 
                 <div className={classes.inputCont}>

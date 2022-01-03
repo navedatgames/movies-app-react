@@ -11,35 +11,35 @@ let App=()=> {
   return (
     
       <Router>
-          {/* <div className="nav-top">
-          <Link to = "/login" ><button>LOGIN</button></Link>
-          <Link to = "/home" ><button>HOME</button></Link>
-         </div> */}
-          
-          <Switch>
+           <Switch>
              
-              <Route exact path="/">
+             <Route exact path="/">
                <Signup/>
               </Route>
+
               <Route path = "/single-movie/:id">
                 <SingleMovie/>
               </Route>
+
               <Route path = "/single-people/:castId">
                 <SinglePeople/>
               </Route>
+
               <Route path = "/login">
                 <Login/>
               </Route>
+
                <Route path = "/home">
                 <Movie/>
               </Route>
+
               <Route path = "/quote">
                 <Quote/>
               </Route>
+
            </Switch>
-          
-  
-      </Router>
+
+        </Router>
     
   );
 }

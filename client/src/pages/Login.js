@@ -47,7 +47,6 @@ return (
       <p className="already-user">New User?</p>
       </div>
     <div className = "page-div">
-       {/* {loginFlag ?  <Redirect to = {{pathname:"./home"}}/> :null} */}
     <div className="inner-page-div">
      <h2 className = "movie-name">
       MoviesApp Login

@@ -8,12 +8,11 @@ function Signup() {
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
   const[confirmPassword,setconpass] = useState('')
-  //const[flag,setFlag] = useState(false)
   let routing = useHistory()
   async function submitHandler(event){
     event.preventDefault();
     if(password!==confirmPassword){
-      console.log("password do not match!!!")
+      alert("password do not match!!!")
     }
     else{
 
@@ -30,9 +29,7 @@ function Signup() {
           console.log(res)
           if(res.status===200 && res.data.status==='ok'){
            alert("signup successfully")
-           localStorage.setItem("name",res.data.name)
            routing.push('/login')
-           //setFlag(true)
           
           }
           else{
@@ -54,7 +51,6 @@ function Signup() {
       <p className="already-user">Already a User?</p>
       </div>
     <div className="page-div">
-      {/* {flag ?  <Redirect to = {{pathname:"./login"}}/> :null} */}
     <div className = 'inner-page-div'>
      <h2 className = "movie-name">
       MoviesApp SignUp
