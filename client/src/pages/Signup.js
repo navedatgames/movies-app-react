@@ -33,7 +33,7 @@ function Signup() {
           
           }
           else{
-            alert("please fill all the details")
+            alert("email id already exists!!")
           }
       }
       catch(error){
@@ -60,25 +60,29 @@ function Signup() {
        type="text"
        value = {name}
        placeholder="Enter Name"
+       required
        onChange = {(e)=> setName(e.target.value)}/>
 
        <input id = "input-bar"
        type="email"
        value = {email}
        placeholder="Enter Email"
-       onChange = {(e)=> setEmail(e.target.value)}/>
+       onChange = {(e)=> setEmail(e.target.value)}
+       required/>
 
        <input id = "input-bar"
        type="password"
        value = {password}
        placeholder="Enter Password"
-       onChange = {(e)=> setPassword(e.target.value)}/>
+       onChange = {(e)=> setPassword(e.target.value)}
+       required/>
 
        <input id = "input-bar"
        type="password"
        value = {confirmPassword}
        placeholder="Enter Password Again"
-       onChange = {(e)=> setconpass(e.target.value)}/>
+       onChange = {(e)=> setconpass(e.target.value)}
+       required/>
       
       
       <input id = "input-bar" type = "submit" value = "Submit"/>
