@@ -9,7 +9,17 @@ app.use(express.json())
 
 app.use(cors()) // middle ware
 
-mongoose.connect('mongodb+srv://khan:7866@cluster0.kkded.mongodb.net/MoviesApp?retryWrites=true&w=majority')
+
+
+var mongoURL = 'mongodb+srv://khan:7866@cluster0.kkded.mongodb.net/MoviesApp?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URL || mongoURL
+mongoose.connect(mongoDB)
+
+
+
+
+
+
 app.post('/api/signup',async (req,res)=>{
     console.log(req.body)
     try{
