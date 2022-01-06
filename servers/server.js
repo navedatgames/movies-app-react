@@ -97,7 +97,7 @@ app.use(function(req,res,error,next){
     })
 })
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT || 4000,()=>{
     console.log('server started on 4000')
 })
 
