@@ -10,10 +10,14 @@ app.use(express.json())
 app.use(cors()) // middle ware
 
 
+try{
+    mongoose.connect("mongodb+srv://khan:7866@cluster0.kkded.mongodb.net/MoviesApp?retryWrites=true&w=majority")
+}
+catch(error){
+    console.log("this is my error!!",error.message)
+}
 
-var mongoURL = 'mongodb+srv://khan:7866@cluster0.kkded.mongodb.net/MoviesApp?retryWrites=true&w=majority'
-var mongoDB = process.env.MONGODB_URL || mongoURL
-mongoose.connect(mongoDB)
+
 
 
 
@@ -93,7 +97,7 @@ app.use(function(req,res,error,next){
     })
 })
 
-app.listen(4000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('server started on 4000')
 })
 
