@@ -151,7 +151,7 @@ let Movie = ()=>{
         alert("all selected movies added successfully")
         try{
             const res = await axios.post(
-                "http://localhost:4000/api/watchlist",
+                "https://warm-crag-36417.herokuapp.com/api/watchlist",
                 {email:localStorage.getItem("email"),watchlist:watchlistarr},{
                     headers:{
                         'Content-Type':'application/json'

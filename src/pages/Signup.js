@@ -18,7 +18,7 @@ function Signup() {
 
       try{
         const res = await axios.post(
-          "http://localhost:4000/api/signup",
+          "https://warm-crag-36417.herokuapp.com/api/signup",
           {name,email,password},{
             headers:{
               'Content-Type':'application/json'
