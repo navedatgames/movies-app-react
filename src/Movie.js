@@ -6,6 +6,7 @@ import {Button,Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
 const watchlistarr = []
 
+
 const useStyles = makeStyles({
     movieStyle:{
         color:"black"
@@ -92,8 +93,7 @@ let Movie = ()=>{
     const [id,setId] = useState("")
     const[toggle,setToggle] = useState(false);
     const[search,setSearch] = useState("");
-    const[flag,setFlag] = useState(false);
-
+   
 
    const routing = useHistory();
     useEffect(()=>{
@@ -107,30 +107,16 @@ let Movie = ()=>{
         })
 
     },[search])
-   function likedMovie(eventname){
-    if(localStorage.getItem("email")===null){
-        alert("please login!!")
-    }
-    else{
-       alert("movie added")
-        watchlistarr.push(eventname)
-        console.log(watchlistarr)
 
+    
 
-    }
-       
-
-   }
-   
+    
     function logout(){
-        if(watchlistarr.length==0 || flag){
+        
         localStorage.clear();
         watchlistarr.length = 0
         routing.push('/login')
-        }
-        else{
-            alert("press the watchList button")
-        }
+       
     }
     function inputData(event){
         setData(event.target.value)
@@ -142,8 +128,9 @@ let Movie = ()=>{
     function togglefun(){
         setToggle(!toggle)
     }
-    async function watchListHandler(){
-        setFlag(true)
+
+    async function watchListHandler(e){
+        watchlistarr.push(e)
         if(localStorage.getItem("email")===null){
             alert("please login!!")
         }
@@ -151,7 +138,7 @@ let Movie = ()=>{
         alert("all selected movies added successfully")
         try{
             const res = await axios.post(
-                "https://warm-crag-36417.herokuapp.com/api/watchlist",
+                "http://localhost:4000/api/watchlist",
                 {email:localStorage.getItem("email"),watchlist:watchlistarr},{
                     headers:{
                         'Content-Type':'application/json'
@@ -160,10 +147,23 @@ let Movie = ()=>{
                 
             )
             console.log(res)
+            const res2 = await axios.post(
+                            "http://localhost:4000/api/movieShow",
+                            {movieName:e,count:1},{
+                                headers:{
+                                    'Content-Type':'application/json'
+                                }
+                            }
+                            
+                        )
+            console.log(res2)
+            
         }
         catch(error){
             console.log(error.message)
         }
+
+
     }
     }
 
@@ -172,7 +172,7 @@ let Movie = ()=>{
        
     <div key = {pos} className ={classes.movieContainer} >
         <div className={classes.watchBtn}>
-        <button className = {classes.plusBtn} onClick = {()=>{likedMovie(el.original_title)}}>+</button>
+        <button className = {classes.plusBtn} onClick = {()=>{watchListHandler(el.original_title)}}>+</button>
         </div>
          
         <Link to = {"/single-movie/" + el.id}> 
@@ -232,9 +232,9 @@ let Movie = ()=>{
                         <Button className = {classes.btnStyle} onClick = {handleKeyDown} variant = "contained" color = "primary" size = "small">SEARCH</Button>
                        
                     </span>
-                    <span>
+                    {/* <span>
                     <Button className = {classes.btnStyle} onClick = {watchListHandler} variant = "contained" color = "secondary" size = "small">WATCHLIST</Button>
-                    </span>
+                    </span> */}
                 </div>
             </div>
 

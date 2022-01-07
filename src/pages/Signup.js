@@ -9,6 +9,7 @@ function Signup() {
   const[password,setPassword] = useState('')
   const[confirmPassword,setconpass] = useState('')
   let routing = useHistory()
+  
   async function submitHandler(event){
     event.preventDefault();
     if(password!==confirmPassword){
@@ -18,7 +19,7 @@ function Signup() {
 
       try{
         const res = await axios.post(
-          "https://warm-crag-36417.herokuapp.com/api/signup",
+          "http://localhost:4000/api/signup",
           {name,email,password},{
             headers:{
               'Content-Type':'application/json'
